@@ -19,7 +19,8 @@
     •	Tested the actual input with expected output in test cases.
 
 
-2.	Find out products bought by each user. 
+2.Find out products bought by each user. 
+
 
      •	 Created a new function to get the number of products bought by each user.
      •	  Using groupBy grouped userid.
