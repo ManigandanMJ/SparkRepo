@@ -4,11 +4,7 @@
 **
 Question-1:**
 
-
-1.	Count of unique locations where each product is sold. 
-
-
-
+Count of unique locations where each product is sold. 
 
 
   •	Imported spark session from pyspark.sql.
