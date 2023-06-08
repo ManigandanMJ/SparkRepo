@@ -7,6 +7,7 @@ Question-1:**
 
 1.	Count of unique locations where each product is sold. 
 
+
   •	Imported spark session from pyspark.sql.
   •	Created logger and configured.
   •	Defined a function for creating the sparksession.
