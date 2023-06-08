@@ -30,7 +30,9 @@
      •	  Called the functions and returned the dataframe.
      •	  Tested the actual input with expected output in test cases.
  
-3.	Total spending done by each user on each product.
+
+3.Total spending done by each user on each product.
+
 
       •	  Created new function for adding the all the products bought by user.
       •	  Created a dataframe using the groupBy for userid and productid.
