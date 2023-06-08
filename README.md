@@ -4,20 +4,19 @@
 Question-1:**
 
 
-Count of unique locations where each product is sold. 
+1.Count of unique locations where each product is sold. 
 
 
-
-  •	Imported spark session from pyspark.sql.
-  •	Created logger and configured.
-  •	Defined a function for creating the sparksession.
-  •	Created spark session and added log file.
-  •	Defined a method for reading the csv file from user.csv and assigned to a new dataframe returned.
-  •	Defined a method for reading the csv file from transaction.csv to a new dataframe returned.
-  •	Created a new dataframe from combine 2 datafreames in new function.
-  •	Created a new method for counting the unique location for each product sold.
-  •	Called the functions in driver file.
-  •	Tested the actual input with expected output in test cases.
+    •	Imported spark session from pyspark.sql.
+    •	Created logger and configured.
+    •	Defined a function for creating the sparksession.
+    •	Created spark session and added log file.
+    •	Defined a method for reading the csv file from user.csv and assigned to a new dataframe returned.
+    •	Defined a method for reading the csv file from transaction.csv to a new dataframe returned.
+    •	Created a new dataframe from combine 2 datafreames in new function.
+    •	Created a new method for counting the unique location for each product sold.
+    •	Called the functions in driver file.
+    •	Tested the actual input with expected output in test cases.
 
 
 2.	Find out products bought by each user. 
