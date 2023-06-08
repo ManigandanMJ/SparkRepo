@@ -9,6 +9,8 @@ Question-1:**
 
 
 
+
+
   •	Imported spark session from pyspark.sql.
   •	Created logger and configured.
   •	Defined a function for creating the sparksession.
