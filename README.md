@@ -21,13 +21,13 @@ Question-1:**
 
 2.	Find out products bought by each user. 
 
-      •	  Created a new function to get the number of products bought by each user.
-      •	  Using groupBy grouped userid.
-      •	  Using aggregation function counting each products bought by userid.
-      •	  Included the log messages.
-      •	  Returned the counted values for each userid and saved in dataframe.
-      •	  Called the functions and returned the dataframe.
-      •	  Tested the actual input with expected output in test cases.
+     •	  Created a new function to get the number of products bought by each user.
+     •	  Using groupBy grouped userid.
+     •	  Using aggregation function counting each products bought by userid.
+     •	  Included the log messages.
+     •	  Returned the counted values for each userid and saved in dataframe.
+     •	  Called the functions and returned the dataframe.
+     •	  Tested the actual input with expected output in test cases.
  
 3.	Total spending done by each user on each product.
 
