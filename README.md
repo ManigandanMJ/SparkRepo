@@ -1,10 +1,10 @@
-#Spark Assignments#
+**Spark Assignments**
 
 
-##Question-1##
+**Question-1**
 
 
-1.Count of unique locations where each product is sold. 
+**1.**Count of unique locations where each product is sold. 
 
 
     •	Imported spark session from pyspark.sql.
@@ -19,7 +19,7 @@
     •	Tested the actual input with expected output in test cases.
 
 
-2.Find out products bought by each user. 
+**2.**Find out products bought by each user. 
 
 
      •	 Created a new function to get the number of products bought by each user.
@@ -31,7 +31,7 @@
      •	  Tested the actual input with expected output in test cases.
  
 
-3.Total spending done by each user on each product.
+**3.**Total spending done by each user on each product.
 
 
       •	  Created new function for adding the all the products bought by user.
