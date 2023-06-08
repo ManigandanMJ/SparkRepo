@@ -1,7 +1,7 @@
-**Spark Assignments**
+#Spark Assignments#
 
-**
-Question-1:**
+
+##Question-1##
 
 
 1.Count of unique locations where each product is sold. 
@@ -21,7 +21,7 @@ Question-1:**
 
 2.	Find out products bought by each user. 
 
-     •	  Created a new function to get the number of products bought by each user.
+     •	 Created a new function to get the number of products bought by each user.
      •	  Using groupBy grouped userid.
      •	  Using aggregation function counting each products bought by userid.
      •	  Included the log messages.
