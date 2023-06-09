@@ -6,7 +6,6 @@ logging.basicConfig(filename="c:\\logs\\spark1.log", filemode="w")
 log = logging.getLogger()
 log.setLevel(logging.INFO)
 
-
 # session_object function
 def session_object():
     # creating spark session
@@ -32,9 +31,9 @@ def dataframe_read_transact(spark):
 
 
 # Joining dataframes function
-def dataframe_join(user_df, transact_df):
+def dataframe_join(user_df, transact_df,user_df_col,transaction_df_col,join_type):
     # joining the data frames with joins
-    combine_df = user_df.join(transact_df, user_df.user_id == transact_df.userid, "inner")
+    combine_df = user_df.join(transact_df,user_df[user_df_col] == transact_df[transaction_df_col], join_type)
     log.info("combined dataframe for user and transaction")
     # combine_df.show()
     return combine_df
