@@ -46,7 +46,9 @@
 
 
 
+
 1.	Write a function to load csv file into rdd.
+
 
 
 
@@ -59,11 +61,13 @@
 
 
 
+
     •	Called the rdd file from the function created through driver.
     •	Using count function rdd lines count is found.
     •	Storing the information in the log file.
     
 3.	Fing the number of times the “WARN ”  is repeated in rdd file.
+
 
 
 
@@ -84,6 +88,7 @@
 
 
 
+
     •	Created schema and created dataframe.
     •	Assigned values from the file to dataframe with different colums.
     •	Separated each file and found client and count fields.
@@ -93,12 +98,14 @@
 
 
 
+
     •	Reading rdd file and filtered using lambda function.
     •	Found mostly failed client using failed keyword.
     •	Received lines of INFO or WARN and Failed.
     •	Counted the filtered lines and verified with testcases.
     
 7.	Most active repository.
+
 
 
 
