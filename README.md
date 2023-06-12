@@ -48,12 +48,14 @@
 1.	Write a function to load csv file into rdd.
 
 
+
     •	Imported loggers for logging the information.
     •	Defined a method to create the session object and configured the file path.
     •	Using sparkContext read the file to rdd.
     •	And stored in another rdd and verified testcases actual and expected.
     
 2.	Number of lines rdd file contains.
+
 
 
     •	Called the rdd file from the function created through driver.
@@ -63,11 +65,13 @@
 3.	Fing the number of times the “WARN ”  is repeated in rdd file.
 
 
+
     •	Filtered the line within lambda, and counted the number of warn word in file.
     •	Assigned to a variable and showed in logfile.
     •	Using test cases actual and expected is similar and verified.
     
 4.	Count number of api_clients in the file.
+
 
 
     •	Read the rdd file and stored in another file.
@@ -78,6 +82,7 @@
 5.	Client did most HTTP requests in the file.
 
 
+
     •	Created schema and created dataframe.
     •	Assigned values from the file to dataframe with different colums.
     •	Separated each file and found client and count fields.
@@ -86,12 +91,14 @@
 6.	Most failed clients.
 
 
+
     •	Reading rdd file and filtered using lambda function.
     •	Found mostly failed client using failed keyword.
     •	Received lines of INFO or WARN and Failed.
     •	Counted the filtered lines and verified with testcases.
     
 7.	Most active repository.
+
 
 
     •	Counted the number of ghtorrent and exists lines.
