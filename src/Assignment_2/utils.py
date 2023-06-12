@@ -5,7 +5,7 @@ import logging
 from pyspark.sql.types import *
 
 logging.basicConfig(filename="c:\\logs\\spark2.log", filemode="w")
-log = logging.getLogger()
+log = logging.getLogger('mylogger')
 log.setLevel(logging.DEBUG)
 
 
@@ -15,11 +15,13 @@ def session_object():
     log.info("created spark session")
     return spark
 
+
 # Reading the text file and creating rdd
 def text_to_rdd(spark):
     rdd = spark.sparkContext.textFile("../../resource/ghtorrent-logs.txt")
     log.info("created rdd file from textfile")
     return rdd
+
 
 # The count of lines in rdd
 def textfile_count(rdd):
@@ -28,11 +30,13 @@ def textfile_count(rdd):
     log.error("%s Number of lines in RDD" % line_count)
     return line_count
 
+
 # counting number of warn logs
 def warn_count(rdd_data):
     word_count = rdd_data.filter(lambda line: "WARN" in line).count()
     log.warning("%s Number of lines in RDD" % word_count)
     return word_count
+
 
 # counting number of apli_clients
 def api_count(rdd_data):
@@ -40,21 +44,40 @@ def api_count(rdd_data):
     log.warning("%s Number of lines in RDD" % line_count1)
     return line_count1
 
+
 # Repositories processed
-def client_requests(rdd_data):
-    client_lines = rdd_data.filter(lambda line: "INFO" in line and "api_client" in line and "URL" in line)
-    delimiter1 = ','
-    delimiter2 = '--'
-    requests_client = client_lines.flatMap(lambda line: line.split(delimiter1)) \
-        .flatMap(lambda line: line.split(delimiter2)) \
-        .reduceByKey(lambda a, b: a + b)\
-        # .max(key=lambda x: x[1])
-    log.warning("%s Number of lines in RDD" % requests_client)
-
-    return requests_client
+# def text_df(spark):
+#     text_file_path = "../../resource/ghtorrent-logs.txt"
+#     df = spark.read.text(text_file_path)
+#    # df.show()
+#     return df
 
 
+def repository_processed(spark):
+    transaction_schema = StructType([
+        StructField('log_msg', StringType(), True),
+        StructField('date_time', StringType(), True),
+        StructField('client_id', StringType(), True)
+    ])
+    df = spark.read.schema(transaction_schema).csv("../../resource/ghtorrent-logs.txt")
 
+    # df.show()
+    return df
+
+
+def extract_df(df):
+    df_col = df.withColumn('clt_id', split(col('client_id'), '--').getItem(0)) \
+        .withColumn('api_client', split(col('client_id'), '--').getItem(1)) \
+        .withColumn('api_clt', split(col('api_client'), ':').getItem(0)) \
+        .withColumn('url', split(col('api_client'), ':').getItem(1))
+    df_col.show()
+    return df_col
+
+
+def max_count(df_col):
+    counts_df = df_col.groupBy("clt_id").agg(count("clt_id").alias("count_total")).orderBy(col("count_total").desc())
+    max_val = counts_df.show(1)
+    return max_val
 
 
 # Repositories failed from rrd
