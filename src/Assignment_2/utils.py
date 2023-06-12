@@ -6,7 +6,7 @@ from pyspark.sql.types import *
 
 logging.basicConfig(filename="c:\\logs\\spark2.log", filemode="w")
 log = logging.getLogger()
-log.setLevel(logging.INFO)
+log.setLevel(logging.DEBUG)
 
 
 # session_object function
@@ -25,7 +25,7 @@ def text_to_rdd(spark):
 def textfile_count(rdd):
     line_count = rdd.count()
     log.warning("%s Number of lines in RDD" % line_count)
-    log.info("%s Number of lines in RDD" % line_count)
+    log.error("%s Number of lines in RDD" % line_count)
     return line_count
 
 # counting number of warn logs
