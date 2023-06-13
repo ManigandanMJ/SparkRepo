@@ -62,10 +62,13 @@ class MyTestCase(unittest.TestCase):
                          ]
 
         expected_df = self.spark.createDataFrame(data=expected_data, schema=expected_schema)
-
-        transformdata_df = dataframe_join(user_df, transact_df)
-
+        user_df_col = "user_id"
+        transaction_df_col = "userid"
+        join_type = "inner"
+        transformdata_df = dataframe_join(user_df, transact_df, user_df_col, transaction_df_col, join_type)
+        #transformdata_df = dataframe_join(user_df, transact_df)
         self.assertEqual(sorted(transformdata_df.collect()),sorted(expected_df.collect())) # add assertion here
+
 
         # unique location testcase
         exp_location_schema = StructType([

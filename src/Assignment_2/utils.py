@@ -45,21 +45,13 @@ def api_count(rdd_data):
     return line_count1
 
 
-# Repositories processed
-# def text_df(spark):
-#     text_file_path = "../../resource/ghtorrent-logs.txt"
-#     df = spark.read.text(text_file_path)
-#    # df.show()
-#     return df
-
-
 def repository_processed(spark):
-    transaction_schema = StructType([
+    torrent_schema = StructType([
         StructField('log_msg', StringType(), True),
         StructField('date_time', StringType(), True),
         StructField('client_id', StringType(), True)
     ])
-    df = spark.read.schema(transaction_schema).csv("../../resource/ghtorrent-logs.txt")
+    df = spark.read.schema(torrent_schema).csv("../../resource/ghtorrent-logs.txt")
 
     # df.show()
     return df
@@ -69,7 +61,9 @@ def extract_df(df):
     df_col = df.withColumn('clt_id', split(col('client_id'), '--').getItem(0)) \
         .withColumn('api_client', split(col('client_id'), '--').getItem(1)) \
         .withColumn('api_clt', split(col('api_client'), ':').getItem(0)) \
-        .withColumn('url', split(col('api_client'), ':').getItem(1))
+        .withColumn('url', split(col('api_client'), ':').getItem(1)) \
+        .withColumn('status', split(col('url'), ' ').getItem(0)) \
+        .withColumn('aft_status', split(col('url'), ' ').getItem(1))
     df_col.show()
     return df_col
 
@@ -81,10 +75,10 @@ def max_count(df_col):
 
 
 # Repositories failed from rrd
-def failed_requests(rdd_data):
-    fail_req = rdd_data.filter(lambda line: "INFO" in line or "WARN" in line and "Failed" in line).count()
-    log.warning("%s Number of lines in RDD" % fail_req)
-    return fail_req
+def failed_requests(df_col):
+    filtered_df = df_col.filter(col("aft_status").like("%Failed%")).agg(count("*").alias("count_max"))
+    log.warning("%s Number of lines in RDD" % filtered_df)
+    return filtered_df.show()
 
 
 # Repository active mostly
